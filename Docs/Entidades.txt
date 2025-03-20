@@ -1,0 +1,43 @@
+Funcionarios
+	Id
+	Name
+	Email
+	Telefone
+	DataNascimento
+	DataAdmissao
+	Status
+	Cpf
+	DepartamentoId
+	Cargo
+	Funcoes
+	FolhaDePagamentoId
+
+Tarefa
+	Id
+	List<FuncionarioId>
+	DataInicio
+	DataConclusao
+	Status
+	Prioridade
+	Descricao
+
+FolhaDePagamento
+	Id
+	SalarioBase
+	DataPagamento
+	TipoPagamento
+	ValeRefeicao
+	ValeTransporte
+
+Departamentos
+	Id
+	Nome
+	Descrição
+
+Férias
+	Id
+	FuncionarioId
+	DataInicio
+	DataFim
+	Status
+	

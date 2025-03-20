@@ -1,0 +1,83 @@
+﻿@page "/employee/edit/{id:int}"
+@inject NavigationManager Navigation
+@inject IEmployeeService employeeService
+
+<PageTitle>Edit Employee</PageTitle>
+
+<MudGrid Justify="Justify.SpaceBetween" Class="mt-3 ml-3 mr-3">
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Name" Label="Nome" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Email" Label="Email" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Phone" Label="Telefone" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.DateOfBirth" Label="Data de Nascimento" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.HiringDate" Label="Data de Contrato" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Status" Label="Status" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Cpf" Label="CPF" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.DepartmentId" Label="Departamento Id" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Position" Label="Posicao" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Roles" Label="Funcoes" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudButton @onclick="PutAsync" Variant="Variant.Filled" Color="Color.Warning" Size="Size.Large"
+            FullWidth="true">Edit</MudButton>
+    </MudItem>
+    <MudItem xs="3">
+        <MudButton @onclick="DeleteAsync" Variant="Variant.Filled" Color="Color.Error" Size="Size.Large"
+            FullWidth="true">
+            Delete</MudButton>
+    </MudItem>
+</MudGrid>
+
+@code {
+    [Parameter] public int id { get; set; }
+    private EmployeeModel? employee = new EmployeeModel();
+    private bool? Status;
+
+    protected override async Task OnInitializedAsync()
+    {
+        EmployeeModel? account = await employeeService.GetByIdAsync(id);
+        if (account != null)
+        {
+            employee = account;
+        }
+    }
+    private async Task PutAsync()
+    {
+        Status = await employeeService.PutAsync(employee);
+
+        if (Status == true)
+        {
+            Navigation.NavigateTo("/employee/search");
+        }
+    }
+    private async Task DeleteAsync()
+    {
+        Status = await employeeService.DeleteAsync(id);
+
+        if (Status == true)
+        {
+            Navigation.NavigateTo("/employee/search");
+        }
+    }
+}

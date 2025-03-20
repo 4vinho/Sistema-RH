@@ -1,0 +1,62 @@
+﻿@page "/employee/search"
+@inject NavigationManager Navigation
+@inject IEmployeeService employeeService
+
+
+<PageTitle>Search Employee</PageTitle>
+
+<MudGrid Justify="Justify.FlexStart" Class="mt-3 ml-3 mr-3">
+    <MudButton @onclick="CpfSearchAsync" Variant="Variant.Filled" Color="Color.Warning">Search
+    </MudButton>
+    <MudTextField @bind-Value="cpfSearch" Label="Pesquisa CPF" Variant="Variant.Outlined">
+    </MudTextField>
+    <MudFlexBreak />
+    <MudButton @onclick="GoToCreate" Class="mt-3" Variant="Variant.Filled" Color="Color.Success">Create</MudButton>
+</MudGrid>
+
+<MudDataGrid Items="@employees" Filterable="false" SortMode="@SortMode.None" Groupable="false" Class="mt-5 ml-5 mr-5">
+    <Columns>
+        <PropertyColumn Property="x => x.Id" />
+        <PropertyColumn Property="x => x.Name" />
+        <PropertyColumn Property="x => x.DepartmentId" />
+        <PropertyColumn Property="x => x.Position" />
+        <TemplateColumn SortBy="@(x => x.Id)">
+            <CellTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit"
+                    Href="@($"/employee/edit/{@context.Item.Id}")" />
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
+
+@code {
+    private List<EmployeeModel>? employees = new List<EmployeeModel>();
+    private string? cpfSearch;
+    protected override async void OnInitialized()
+    {
+        var employeesIEnumerable = await employeeService.GetAllByStatusAsync(StatusEnum.Active);
+        employees = employeesIEnumerable.ToList();
+        StateHasChanged();
+    }
+
+    private async Task GoToCreate()
+    {
+        Navigation.NavigateTo("/employee/create");
+    }
+
+    private async Task CpfSearchAsync()
+    {
+        var cpfEmployee = await employeeService.GetByCPFAsync(cpfSearch);
+
+        if (cpfEmployee is null)
+        {
+            employees.Clear();
+            return;
+        }
+
+
+        employees.Clear();
+        employees.Add(cpfEmployee);
+        StateHasChanged();
+    }
+}

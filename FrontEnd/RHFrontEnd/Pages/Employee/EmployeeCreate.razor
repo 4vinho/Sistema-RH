@@ -1,0 +1,60 @@
+﻿@page "/employee/create"
+@inject NavigationManager Navigation
+@inject IEmployeeService employeeService
+
+<PageTitle>Edit Employee</PageTitle>
+
+<MudGrid Justify="Justify.SpaceBetween" Class="mt-3 ml-3 mr-3">
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Name" Label="Nome" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Email" Label="Email" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Phone" Label="Telefone" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.DateOfBirth" Label="Data de Nascimento" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.HiringDate" Label="Data de Contrato" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Status" Label="Status" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Cpf" Label="CPF" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.DepartmentId" Label="Departamento Id" Variant="Variant.Outlined">
+        </MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Position" Label="Posicao" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudTextField @bind-Value="employee.Roles" Label="Funcoes" Variant="Variant.Outlined"></MudTextField>
+    </MudItem>
+    <MudItem xs="3">
+        <MudButton @onclick="PostAsync" Variant="Variant.Filled" Color="Color.Success" Size="Size.Large"
+            FullWidth="true">Create</MudButton>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private EmployeeModel? employee = new EmployeeModel();
+    private bool? Status = false;
+    private async Task PostAsync()
+    {
+        Status = await employeeService.PostAsync(employee);
+
+        if (Status == true)
+        {
+            Navigation.NavigateTo("/employee/search");
+        }
+    }
+
+}

@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@using MudBlazor
+
+<MudLayout>
+    <MudAppBar Color="Color.Dark">
+        <MudIconButton Icon="@Icons.Material.Filled.Create" Color="Color.Primary" Edge="Edge.Start"
+            OnClick="@((e) => DrawerToggle())" />
+        BarberSistem
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}
