@@ -37,14 +37,14 @@ dotnet run --project src/Frontend
 Após isso, a aplicação estará disponível em http://localhost:5000.
 
 ### Estrutura do Projeto ###
-
+```
 SistemaRH/
 ├── src/
 │   ├── Backend/  → Microsserviços de API
 │   ├── Frontend/ → Interfaces Blazor
 │   ├── Docs/     → Informações sobre o App
 ├── README.md
-
+```
 ### Endpoints Principais ###
 
 -EmployeeServiceAPI
