@@ -18,8 +18,8 @@ Como Configurar e Rodar o Projeto
 
 1. Clonar o Repositório
 
-git clone https://github.com/4vinho/NOME_DO_REPOSITORIO.git
-cd NOME_DO_REPOSITORIO
+git clone https://github.com/4vinho/Sistema-RH.git
+cd Sistema-RH
 
 2. Configurar as Variáveis de Ambiente
 
@@ -28,13 +28,16 @@ cd NOME_DO_REPOSITORIO
 
 4. Iniciar as APIs
 
-dotnet run --project src/Backend/Api
+cd BackEnd
+dotnet watch run
 
 5. Iniciar o Frontend
 
-dotnet run --project src/Frontend
+cd FrontEnd
+cd RHFrontEnd
+dotnet watch run
 
-Após isso, a aplicação estará disponível em http://localhost:5000.
+Após isso, a aplicação estará disponível em seu navegador.
 
 ## Estrutura do Projeto ##
 ```
