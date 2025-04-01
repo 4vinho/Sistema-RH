@@ -10,11 +10,9 @@ Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços
 
 Frontend: Blazor WebAssembly, MudBlazor
 
-## Infraestrutura: ##
-
 Arquitetura: DDD, Arquitetura Limpa
 
-Como Configurar e Rodar o Projeto
+## Como Configurar e Rodar o Projeto ##
 
 1. Clonar o Repositório
 ```
