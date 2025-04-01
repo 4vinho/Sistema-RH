@@ -38,11 +38,11 @@ Após isso, a aplicação estará disponível em http://localhost:5000.
 
 ### Estrutura do Projeto ###
 
-NOME_DO_PROJETO/
+SistemaRH/
 ├── src/
 │   ├── Backend/  → Microsserviços de API
 │   ├── Frontend/ → Interfaces Blazor
-│   ├── Docs/   → Informações sobre o App
+│   ├── Docs/     → Informações sobre o App
 ├── README.md
 
 ### Endpoints Principais ###
@@ -73,23 +73,29 @@ NOME_DO_PROJETO/
   /api/Employee
   ```
 -MissionServiceAPI
+  ```http
   GET
-  ' /api/Mission/status/{statusEnum}
-
+  /api/Mission/status/{statusEnum}
+  ```
+  ```http
   GET
-  ' /api/Mission/{id}
-
+  /api/Mission/{id}
+  ```
+  ```http
   DELETE
-  ' /api/Mission/{id}
-
+  /api/Mission/{id}
+  ```
+  ```http
   GET
-  ' /api/Mission/employeeId/{employeeId}
-
+  /api/Mission/employeeId/{employeeId}
+  ```
+  ```http
   POST
-  ' /api/Mission
-
+  /api/Mission
+  ```
+  ```http
   PUT
-  ' /api/Mission
-
+  /api/Mission
+  ```
 
 Desenvolvido por Eduardo Alves Nascimento
