@@ -48,24 +48,30 @@ NOME_DO_PROJETO/
 ### Endpoints Principais ###
 
 -EmployeeServiceAPI
+  ```http
   GET
-  ' /api/Employee/status/statusEnum '
-
+  /api/Employee/status/statusEnum
+  ```
+  ```http
   GET
-  ' /api/Employee/{id}
-
+  /api/Employee/{id}
+  ```
+  ```http
   DELETE
-  ' /api/Employee/{id}
-
+  /api/Employee/{id}
+  ```
+  ```http
   GET
-  ' /api/Employee/cpf/{CPF}
-
+  /api/Employee/cpf/{CPF}
+  ```
+  ```http
   POST
-  ' /api/Employee
-
+  /api/Employee
+  ```
+  ```http
   PUT
-  ' /api/Employee
-
+  /api/Employee
+  ```
 -MissionServiceAPI
   GET
   ' /api/Mission/status/{statusEnum}
