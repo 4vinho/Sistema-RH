@@ -4,13 +4,13 @@
 
 Este é um sistema de Recursos Humanos desenvolvido para facilitar a gestão de colaboradores. Ele permite cadastrar, editar e excluir funcionários, além de gerenciar folhas de pagamento, cargos e departamentos. O objetivo é oferecer uma solução eficiente e acessível para empresas que precisam organizar melhor seus processos de RH.
 
-### Tecnologias Utilizadas ###
+## Tecnologias Utilizadas ##
 
 Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços
 
 Frontend: Blazor WebAssembly, MudBlazor
 
-### Infraestrutura: ###
+## Infraestrutura: ##
 
 Arquitetura: DDD, Arquitetura Limpa
 
@@ -26,7 +26,7 @@ cd NOME_DO_REPOSITORIO
 3. Configurar Banco de Dados
    Modificar os microsserviços e modificar o local do banco de dados de InMemory para o de sua preferencia
 
-5. Iniciar as APIs
+4. Iniciar as APIs
 
 dotnet run --project src/Backend/Api
 
@@ -36,7 +36,7 @@ dotnet run --project src/Frontend
 
 Após isso, a aplicação estará disponível em http://localhost:5000.
 
-### Estrutura do Projeto ###
+## Estrutura do Projeto ##
 ```
 SistemaRH/
 ├── src/
@@ -45,9 +45,9 @@ SistemaRH/
 │   ├── Docs/     → Informações sobre o App
 ├── README.md
 ```
-### Endpoints Principais ###
+## Endpoints ##
 
--EmployeeServiceAPI
+### -EmployeeServiceAPI ###
   ```http
   GET
   /api/Employee/status/statusEnum
@@ -72,7 +72,7 @@ SistemaRH/
   PUT
   /api/Employee
   ```
--MissionServiceAPI
+### -MissionServiceAPI ###
   ```http
   GET
   /api/Mission/status/{statusEnum}
@@ -97,5 +97,6 @@ SistemaRH/
   PUT
   /api/Mission
   ```
+### -Mais APIs em processo de desenvolvimento ###
 
 Desenvolvido por Eduardo Alves Nascimento
