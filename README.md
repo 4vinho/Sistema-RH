@@ -17,26 +17,26 @@ Arquitetura: DDD, Arquitetura Limpa
 Como Configurar e Rodar o Projeto
 
 1. Clonar o Repositório
-
+```
 git clone https://github.com/4vinho/Sistema-RH.git
 cd Sistema-RH
-
+```
 2. Configurar as Variáveis de Ambiente
 
 3. Configurar Banco de Dados
    Modificar os microsserviços e modificar o local do banco de dados de InMemory para o de sua preferencia
 
 4. Iniciar as APIs
-
+```
 cd BackEnd
 dotnet watch run
-
+```
 5. Iniciar o Frontend
-
+```
 cd FrontEnd
 cd RHFrontEnd
 dotnet watch run
-
+```
 Após isso, a aplicação estará disponível em seu navegador.
 
 ## Estrutura do Projeto ##
