@@ -49,7 +49,7 @@ NOME_DO_PROJETO/
 
 -EmployeeServiceAPI
   GET
-  ' /api/Employee/status/statusEnum
+  ' /api/Employee/status/statusEnum '
 
   GET
   ' /api/Employee/{id}
