@@ -1,16 +1,16 @@
-Sistema de RH
+#Sistema de RH#
 
-Sobre o Projeto
+##Sobre o Projeto##
 
 Este é um sistema de Recursos Humanos desenvolvido para facilitar a gestão de colaboradores. Ele permite cadastrar, editar e excluir funcionários, além de gerenciar folhas de pagamento, cargos e departamentos. O objetivo é oferecer uma solução eficiente e acessível para empresas que precisam organizar melhor seus processos de RH.
 
-Tecnologias Utilizadas
+###Tecnologias Utilizadas###
 
 Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços
 
 Frontend: Blazor WebAssembly, MudBlazor
 
-Infraestrutura: 
+###Infraestrutura: ###
 
 Arquitetura: DDD, Arquitetura Limpa
 
@@ -36,7 +36,7 @@ dotnet run --project src/Frontend
 
 Após isso, a aplicação estará disponível em http://localhost:5000.
 
-Estrutura do Projeto
+###Estrutura do Projeto###
 
 NOME_DO_PROJETO/
 ├── src/
@@ -45,45 +45,45 @@ NOME_DO_PROJETO/
 │   ├── Docs/   → Informações sobre o App
 ├── README.md
 
-Endpoints Principais
+###Endpoints Principais###
 
 -EmployeeServiceAPI
   GET
-  /api/Employee/status/statusEnum
+  '/api/Employee/status/statusEnum
 
   GET
-  /api/Employee/{id}
+  '/api/Employee/{id}
 
   DELETE
-  /api/Employee/{id}
+  '/api/Employee/{id}
 
   GET
-  /api/Employee/cpf/{CPF}
+  '/api/Employee/cpf/{CPF}
 
   POST
-  /api/Employee
+  '/api/Employee
 
   PUT
-  /api/Employee
+  '/api/Employee
 
 -MissionServiceAPI
   GET
-  /api/Mission/status/{statusEnum}
+  '/api/Mission/status/{statusEnum}
 
   GET
-  /api/Mission/{id}
+  '/api/Mission/{id}
 
   DELETE
-  /api/Mission/{id}
+  '/api/Mission/{id}
 
   GET
-  /api/Mission/employeeId/{employeeId}
+  '/api/Mission/employeeId/{employeeId}
 
   POST
-  /api/Mission
+  '/api/Mission
 
   PUT
-  /api/Mission
+  '/api/Mission
 
 
 Desenvolvido por Eduardo Alves Nascimento
