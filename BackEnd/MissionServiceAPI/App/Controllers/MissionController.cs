@@ -9,14 +9,11 @@ namespace MissionServiceAPI;
 public class MissionController(IMissionRepository repository) : ControllerBase
 {
     [HttpGet("status/{statusEnum}")]
-    public async Task<IActionResult> GetByStatusAsync(StatusEnum statusEnum)
+    public async Task<IActionResult> GetByStatusAsync(StatusEnum statusEnum, [FromQuery] PagedRequest pagedRequest)
     {
-        var response = await repository.GetByStatusAsync(statusEnum);
+        var response = await repository.GetByStatusAsync(statusEnum, pagedRequest);
 
-        if (response == null)
-            return NotFound();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
     [HttpGet("{id}")]
@@ -24,21 +21,15 @@ public class MissionController(IMissionRepository repository) : ControllerBase
     {
         var response = await repository.GetByIdAsync(id);
 
-        if (response == null)
-            return NotFound();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
     [HttpGet("employeeId/{employeeId}")]
-    public async Task<IActionResult> GetWorkItemsByEmployeeId(int employeeId)
+    public async Task<IActionResult> GetWorkItemsByEmployeeId(int employeeId, [FromQuery] PagedRequest pagedRequest)
     {
-        var response = await repository.GetWorkItemsByEmployeeId(employeeId);
+        var response = await repository.GetWorkItemsByEmployeeId(employeeId, pagedRequest);
 
-        if (response == null)
-            return NotFound();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
     [HttpPost]
@@ -46,10 +37,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
     {
         var response = await repository.PostAsync(missionDTO);
 
-        if (response == null)
-            return BadRequest();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
     [HttpPut]
@@ -57,10 +45,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
     {
         var response = await repository.PutAsync(missionDTO);
 
-        if (response == null)
-            return NotFound();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
     [HttpDelete("{id}")]
@@ -68,9 +53,6 @@ public class MissionController(IMissionRepository repository) : ControllerBase
     {
         var response = await repository.DeleteAsync(id);
 
-        if (response == null)
-            return NotFound();
-
-        return Ok(response);
+        return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 }

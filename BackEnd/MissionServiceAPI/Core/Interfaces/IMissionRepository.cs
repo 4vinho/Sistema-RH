@@ -2,10 +2,10 @@
 
 public interface IMissionRepository
 {
-    Task<MissionDTO?> GetByIdAsync(int Id);
-    Task<IEnumerable<MissionDTO>?> GetWorkItemsByEmployeeId(int employeeId);
-    Task<IEnumerable<MissionDTO>?> GetByStatusAsync(StatusEnum statusEnum);
-    Task<bool?> PostAsync(MissionDTO missionDTO);
-    Task<bool?> PutAsync(MissionDTO missionDTO);
-    Task<bool?> DeleteAsync(int id);
+    Task<Response<MissionDTO?>> GetByIdAsync(int Id);
+    Task<PagedResponse<IEnumerable<MissionDTO>?>> GetWorkItemsByEmployeeId(int employeeId, PagedRequest pagedRequest);
+    Task<PagedResponse<IEnumerable<MissionDTO>?>> GetByStatusAsync(StatusEnum statusEnum, PagedRequest pagedRequest);
+    Task<Response<MissionDTO?>> PostAsync(MissionDTO missionDTO);
+    Task<Response<MissionDTO?>> PutAsync(MissionDTO missionDTO);
+    Task<Response<bool?>> DeleteAsync(int id);
 }
