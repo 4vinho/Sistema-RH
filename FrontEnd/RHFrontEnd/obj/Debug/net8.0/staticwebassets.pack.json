@@ -1,43 +1,43 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\obj\\Debug\\net8.0\\compressed\\ovci9hu6mt.gz",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\obj\\Debug\\net8.0\\compressed\\ovci9hu6mt.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RHFrontEnd.styles.css",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\obj\\Debug\\net8.0\\scopedcss\\bundle\\RHFrontEnd.styles.css",
       "PackagePath": "staticwebassets\\RHFrontEnd.styles.css"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\index.html",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\wwwroot\\sample-data\\weather.json",
+      "Id": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {

@@ -2,10 +2,10 @@
 
 public interface IEmployeeRepository
 {
-    Task<IEnumerable<EmployeeDTO>?> GetAllByStatusAsync(StatusEnum statusEnum);
-    Task<EmployeeDTO?> GetByIdAsync(int id);
-    Task<EmployeeDTO?> GetByCPFAsync(string CPF);
-    Task<bool?> PostAsync(EmployeeDTO employeeDTO);
-    Task<bool?> PutAsync(EmployeeDTO employeeDTO);
-    Task<bool?> DeleteAsync(int id);
+    Task<PagedResponse<IEnumerable<EmployeeDTO>?>> GetAllByStatusAsync(StatusEnum statusEnum, PagedRequest pagedRequest);
+    Task<Response<EmployeeDTO?>> GetByIdAsync(int id);
+    Task<Response<EmployeeDTO?>> GetByCPFAsync(string CPF);
+    Task<Response<EmployeeDTO?>> PostAsync(EmployeeDTO employeeDTO);
+    Task<Response<EmployeeDTO?>> PutAsync(EmployeeDTO employeeDTO);
+    Task<Response<bool?>> DeleteAsync(int id);
 }

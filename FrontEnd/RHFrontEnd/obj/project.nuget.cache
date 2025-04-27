@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L9wcwlUpuKlwwQRhDnLfrg2sQJC2DbyF+q/bDul5SMqpTd/ah5tlwhOoIdKMH55H5/A3R8CXopB+tRPvo2BXyg==",
+  "dgSpecHash": "L2nvQuB+GIXZBE2CGydd8czQXsSzWefMMBB5KxLf/5ctURe1gu768efT1D+7Rkb7uC5bmB5D0eQw76GXwrlQZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\GestaoRH\\FrontEnd\\RHFrontEnd\\RHFrontEnd.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\Sistema-RH\\FrontEnd\\RHFrontEnd\\RHFrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.12\\microsoft.aspnetcore.authorization.8.0.12.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.12\\microsoft.aspnetcore.components.8.0.12.nupkg.sha512",

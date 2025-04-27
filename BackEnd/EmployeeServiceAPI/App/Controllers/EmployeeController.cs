@@ -8,15 +8,12 @@ namespace EmployeeServiceAPI
     [ApiController]
     public class EmployeeController(IEmployeeRepository repository) : ControllerBase
     {
-        [HttpGet("status/statusEnum")]
-        public async Task<IActionResult> GetAllByStatusAsync(StatusEnum statusEnum)
+        [HttpGet("status/{statusEnum}/")]
+        public async Task<IActionResult> GetAllByStatusAsync(StatusEnum statusEnum, [FromQuery]PagedRequest pagedRequest)
         {
-            var response = await repository.GetAllByStatusAsync(statusEnum);
+            var response = await repository.GetAllByStatusAsync(statusEnum, pagedRequest);
 
-            if (response == null)
-                return NotFound();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
         [HttpGet("{id}")]
@@ -24,10 +21,7 @@ namespace EmployeeServiceAPI
         {
             var response = await repository.GetByIdAsync(id);
 
-            if (response == null)
-                return NotFound();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
         [HttpGet("cpf/{CPF}")]
@@ -35,10 +29,7 @@ namespace EmployeeServiceAPI
         {
             var response = await repository.GetByCPFAsync(CPF);
 
-            if (response == null)
-                return NotFound();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
         [HttpPost]
@@ -46,10 +37,7 @@ namespace EmployeeServiceAPI
         {
             var response = await repository.PostAsync(employeeDTO);
 
-            if (response == null)
-                return BadRequest();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
         [HttpPut]
@@ -57,10 +45,7 @@ namespace EmployeeServiceAPI
         {
             var response = await repository.PutAsync(employeeDTO);
 
-            if (response == null)
-                return NotFound();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
         [HttpDelete("{id}")]
@@ -68,10 +53,7 @@ namespace EmployeeServiceAPI
         {
             var response = await repository.DeleteAsync(id);
 
-            if (response == null)
-                return NotFound();
-
-            return Ok(response);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
     }
 }
