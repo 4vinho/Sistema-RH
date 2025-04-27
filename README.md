@@ -6,7 +6,7 @@ Este é um sistema de Recursos Humanos desenvolvido para facilitar a gestão de 
 
 ## Tecnologias Utilizadas ##
 
-Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços
+Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços, SQLServer
 
 Frontend: Blazor WebAssembly, MudBlazor
 
