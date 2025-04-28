@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthorization();
+
 //
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
