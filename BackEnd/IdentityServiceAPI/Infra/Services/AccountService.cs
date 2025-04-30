@@ -4,7 +4,8 @@ namespace IdentityServiceAPI;
 
 public class AccountService(
     UserManager<IdentityUser> userManager,
-    SignInManager<IdentityUser> signInManager)
+    SignInManager<IdentityUser> signInManager,
+    IJWTAuthService jWTAuthService)
     : IAccountService
 {
     public async Task<(bool Success, string Error)> Login(LoginModel model)
@@ -19,8 +20,14 @@ public class AccountService(
             );
 
             if (result.Succeeded)
-                return (true, string.Empty);
-
+            {
+                var user = await userManager.FindByEmailAsync(model.Email);
+                var roles = await userManager.GetRolesAsync(user);
+                var role = roles.FirstOrDefault() ?? "User";
+                var jwtToken = jWTAuthService.GenerateTokenString(model, role);
+                 return (true, jwtToken);
+            }
+            ;
             if (result.IsLockedOut)
                 return (false, "Conta bloqueada devido a várias tentativas inválidas.");
 

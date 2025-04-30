@@ -46,9 +46,9 @@ public class SeedUserRoleInitial(RoleManager<IdentityRole> roleManager, UserMana
         if (await userManager.FindByEmailAsync("usuario@localhost") == null)
         {
             var user = new IdentityUser();
-            user.UserName = "usuario@localhost";
+            user.UserName = "Usuario@localhost";
             user.NormalizedUserName = "USUARIO@LOCALHOST";
-            user.Email = "usuario@localhost";
+            user.Email = "Usuario@localhost";
             user.NormalizedEmail = "USUARIO@LOCALHOST";
             user.EmailConfirmed = true;
             user.LockoutEnabled = false;

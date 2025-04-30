@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 //ServiceRegister
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+builder.Services.AddScoped<IJWTAuthService, JWTAuthService>();
 
 
 //DB
@@ -21,6 +22,26 @@ builder.Services.AddDbContext<IdentityServiceAPIAppDbContext>(options => options
 builder.Services
     .AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<IdentityServiceAPIAppDbContext>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateActor = true,
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        RequireExpirationTime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
+        ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value
+    };
+});
+
 
 builder.Services.AddAuthorization();
 
