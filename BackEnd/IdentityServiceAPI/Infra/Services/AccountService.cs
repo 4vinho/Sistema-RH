@@ -8,7 +8,7 @@ public class AccountService(
     IJWTAuthService jWTAuthService)
     : IAccountService
 {
-    public async Task<(bool Success, string Error)> Login(LoginModel model)
+    public async Task<Response<string?>> Login(LoginModel model)
     {
         try
         {
@@ -25,21 +25,21 @@ public class AccountService(
                 var roles = await userManager.GetRolesAsync(user);
                 var role = roles.FirstOrDefault() ?? "User";
                 var jwtToken = jWTAuthService.GenerateTokenString(model, role);
-                 return (true, jwtToken);
+                return new Response<string?>(200, "Logged successfully", jwtToken);
             }
             ;
             if (result.IsLockedOut)
-                return (false, "Conta bloqueada devido a várias tentativas inválidas.");
+                return new Response<string?>(400, "maximum login attempts reached", string.Empty);
 
-            return (false, "Email ou senha inválidos.");
+            return new Response<string?>(404, "Incorrect Password or Email", string.Empty);
         }
         catch (Exception ex)
         {
-            return (false, ex.Message);
+            return new Response<string?>(500, "Internal Error", string.Empty);
         }
     }
 
-    public async Task<(bool Success, string Error)> Register(RegisterModel model)
+    public async Task<Response<bool?>> Register(RegisterModel model)
     {
         try
         {
@@ -53,28 +53,28 @@ public class AccountService(
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
-                return (true, string.Empty);
+            return new Response<bool?>(200, "Registered successfully", true);
 
             var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-            return (false, errors);
+            return new Response<bool?>(400, $"{errors}", false);
         }
         catch (Exception ex)
         {
-            return (false, ex.Message);
+            return new Response<bool?>(500, "Internal Error", false);
         }
     }
 
-    public async Task<(bool Success, string Error)> Logout()
+    public async Task<Response<bool?>> Logout()
     {
         try
         {
             await signInManager.SignOutAsync();
 
-            return (true, string.Empty);
+            return new Response<bool?>(200, "Logged out successfully", true);
         }
         catch (Exception ex)
         {
-            return (false, ex.Message);
+            return new Response<bool?>(500, "Internal Error", false);
         }
     }
 }

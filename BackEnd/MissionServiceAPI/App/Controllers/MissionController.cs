@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MissionServiceAPI;
@@ -8,7 +9,7 @@ namespace MissionServiceAPI;
 [ApiController]
 public class MissionController(IMissionRepository repository) : ControllerBase
 {
-    [HttpGet("status/{statusEnum}")]
+    [HttpGet("status/{statusEnum}"), Authorize(Roles = "User ,Admin, Owner")]
     public async Task<IActionResult> GetByStatusAsync(StatusEnum statusEnum, [FromQuery] PagedRequest pagedRequest)
     {
         var response = await repository.GetByStatusAsync(statusEnum, pagedRequest);
@@ -16,7 +17,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
         return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), Authorize(Roles = "User ,Admin, Owner")]
     public async Task<IActionResult> GetByIdAsync(int id)
     {
         var response = await repository.GetByIdAsync(id);
@@ -24,7 +25,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
         return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
-    [HttpGet("employeeId/{employeeId}")]
+    [HttpGet("employeeId/{employeeId}"), Authorize(Roles = "User ,Admin, Owner")]
     public async Task<IActionResult> GetWorkItemsByEmployeeId(int employeeId, [FromQuery] PagedRequest pagedRequest)
     {
         var response = await repository.GetWorkItemsByEmployeeId(employeeId, pagedRequest);
@@ -32,7 +33,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
         return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
-    [HttpPost]
+    [HttpPost, Authorize(Roles = "Admin, Owner")]
     public async Task<IActionResult> PostAsync([FromBody] MissionDTO missionDTO)
     {
         var response = await repository.PostAsync(missionDTO);
@@ -40,7 +41,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
         return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
-    [HttpPut]
+    [HttpPut, Authorize(Roles = "Admin, Owner")]
     public async Task<IActionResult> PutAsync([FromBody] MissionDTO missionDTO)
     {
         var response = await repository.PutAsync(missionDTO);
@@ -48,7 +49,7 @@ public class MissionController(IMissionRepository repository) : ControllerBase
         return response.IsSuccess ? Ok(response) : BadRequest(response);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id}"), Authorize(Roles = "Owner")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
         var response = await repository.DeleteAsync(id);

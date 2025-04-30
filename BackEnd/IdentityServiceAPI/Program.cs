@@ -38,7 +38,8 @@ builder.Services.AddAuthentication(options =>
         RequireExpirationTime = true,
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
-        ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value
+        ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value))
     };
 });
 

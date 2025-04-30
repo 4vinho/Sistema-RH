@@ -2,7 +2,7 @@
 
 public interface IAccountService
 {
-    public Task<(bool Success, string Error)> Register(RegisterModel model);
-    public Task<(bool Success, string Error)> Login(LoginModel model);
-    public Task<(bool Success, string Error)> Logout();
+    public Task<Response<bool?>> Register(RegisterModel model);
+    public Task<Response<string?>> Login(LoginModel model);
+    public Task<Response<bool?>> Logout();
 }

@@ -1,4 +1,5 @@
 using IdentityServiceAPI;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,17 +10,14 @@ namespace MyApp.Namespace
     [ApiController]
     public class AccountController(IAccountService accountService) : ControllerBase
     {
-        [HttpPost("Register")]
+        [HttpPost("Register"), Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> Register(RegisterModel model)
         {
             try
             {
                 var result = await accountService.Register(model);
 
-                if (result.Success == true)
-                    return Ok(result.Error);
-
-                return BadRequest(result.Error);
+                return result.IsSuccess ? Ok(result) : BadRequest(result);
             }
             catch (System.Exception)
             {
@@ -28,17 +26,14 @@ namespace MyApp.Namespace
 
         }
 
-        [HttpPost("Login")]
+        [HttpPost("Login"), Authorize(Roles = "User ,Admin, Owner")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             try
             {
                 var result = await accountService.Login(model);
 
-                if (result.Success == true)
-                    return Ok(result.Error);
-
-                return BadRequest(result.Error);
+                return result.IsSuccess ? Ok(result) : BadRequest(result);
             }
             catch (System.Exception)
             {
@@ -46,22 +41,24 @@ namespace MyApp.Namespace
             }
         }
 
-        [HttpPost("Logout")]
+        [HttpPost("Logout"), Authorize(Roles = "User ,Admin, Owner")]
         public async Task<IActionResult> Logout()
         {
             try
             {
                 var result = await accountService.Logout();
 
-                if (result.Success == true)
-                    return Ok(result.Error);
-
-                return BadRequest(result.Error);
+                return result.IsSuccess ? Ok(result) : BadRequest(result);
             }
             catch (System.Exception)
             {
                 throw;
             }
+        }
+        [HttpGet, Authorize]
+        public IActionResult Teste()
+        {
+            return Ok("Hello World");
         }
     }
 }

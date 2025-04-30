@@ -5,12 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeServiceAPI
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController(IEmployeeRepository repository) : ControllerBase
     {
-        [HttpGet("status/{statusEnum}/")]
+        [HttpGet("status/{statusEnum}/"), Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> GetAllByStatusAsync(StatusEnum statusEnum, [FromQuery]PagedRequest pagedRequest)
         {
             var response = await repository.GetAllByStatusAsync(statusEnum, pagedRequest);
@@ -18,7 +17,7 @@ namespace EmployeeServiceAPI
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> GetAccountEmployeeAsync(int id)
         {
             var response = await repository.GetByIdAsync(id);
@@ -26,7 +25,7 @@ namespace EmployeeServiceAPI
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpGet("cpf/{CPF}")]
+        [HttpGet("cpf/{CPF}"), Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> GetAccountEmployeeAsync(string CPF)
         {
             var response = await repository.GetByCPFAsync(CPF);
@@ -34,7 +33,7 @@ namespace EmployeeServiceAPI
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Owner")]
         public async Task<IActionResult> PostAsync([FromBody] EmployeeDTO employeeDTO)
         {
             var response = await repository.PostAsync(employeeDTO);
@@ -42,7 +41,7 @@ namespace EmployeeServiceAPI
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Admin, Owner")]
         public async Task<IActionResult> PutAsync([FromBody] EmployeeDTO employeeDTO)
         {
             var response = await repository.PutAsync(employeeDTO);
@@ -50,7 +49,7 @@ namespace EmployeeServiceAPI
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Owner")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var response = await repository.DeleteAsync(id);
