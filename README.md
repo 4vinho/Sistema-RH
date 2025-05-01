@@ -1,103 +1,62 @@
-# Sistema de RH #
+# 📘 Sistema-RH
 
-## Sobre o Projeto ##
+Sistema de Recursos Humanos moderno e escalável, desenvolvido com arquitetura de microsserviços. Possui uma interface intuitiva no front-end com Blazor WebAssembly e um back-end robusto com ASP.NET Core, aplicando DDD e Clean Architecture.
 
-Este é um sistema de Recursos Humanos desenvolvido para facilitar a gestão de colaboradores. Ele permite cadastrar, editar e excluir funcionários, além de gerenciar folhas de pagamento, cargos e departamentos. O objetivo é oferecer uma solução eficiente e acessível para empresas que precisam organizar melhor seus processos de RH.
+## 🚀 Tecnologias Utilizadas
 
-## Tecnologias Utilizadas ##
+### Backend
+- ASP.NET Core
+- Entity Framework Core
+- AutoMapper
+- SQL Server
+- Microsserviços
+- DDD (Domain-Driven Design)
+- Clean Architecture
 
-Backend: ASP.NET Core, Entity Framework Core, AutoMapper, Microsserviços, SQLServer
+### Frontend
+- Blazor WebAssembly
+- MudBlazor
 
-Frontend: Blazor WebAssembly, MudBlazor
+## 📦 Funcionalidades
 
-Arquitetura: DDD, Arquitetura Limpa
+- Cadastro, edição e exclusão de funcionários
+- Gestão de cargos e departamentos
+- Controle de folhas de pagamento
+- Interface web moderna e responsiva
+- Comunicação entre microsserviços
+- Autenticação e segurança
 
-## Como Configurar e Rodar o Projeto ##
+## ⚙️ Como Executar o Projeto
 
-1. Clonar o Repositório
-```
+### 1. Clonar o repositório
 git clone https://github.com/4vinho/Sistema-RH.git
 cd Sistema-RH
-```
-2. Configurar as Variáveis de Ambiente
 
-3. Configurar Banco de Dados
-   Modificar os microsserviços e modificar o local do banco de dados de InMemory para o de sua preferencia
+### 2. Configurar variáveis de ambiente
+Crie um arquivo `.env` com as variáveis necessárias:
 
-4. Iniciar as APIs
-```
-cd BackEnd
-dotnet watch run
-```
-5. Iniciar o Frontend
-```
-cd FrontEnd
-cd RHFrontEnd
-dotnet watch run
-```
-Após isso, a aplicação estará disponível em seu navegador.
+ASPNETCORE_ENVIRONMENT=Development
+ConnectionStrings__DefaultConnection=YOUR_CONNECTION_STRING
 
-## Estrutura do Projeto ##
-```
-SistemaRH/
-├── src/
-│   ├── Backend/  → Microsserviços de API
-│   ├── Frontend/ → Interfaces Blazor
-│   ├── Docs/     → Informações sobre o App
-├── README.md
-```
-## Endpoints ##
+### 3. Aplicar migrações do banco de dados
+dotnet ef database update
 
-### -EmployeeServiceAPI ###
-  ```http
-  GET
-  /api/Employee/status/statusEnum
-  ```
-  ```http
-  GET
-  /api/Employee/{id}
-  ```
-  ```http
-  DELETE
-  /api/Employee/{id}
-  ```
-  ```http
-  GET
-  /api/Employee/cpf/{CPF}
-  ```
-  ```http
-  POST
-  /api/Employee
-  ```
-  ```http
-  PUT
-  /api/Employee
-  ```
-### -MissionServiceAPI ###
-  ```http
-  GET
-  /api/Mission/status/{statusEnum}
-  ```
-  ```http
-  GET
-  /api/Mission/{id}
-  ```
-  ```http
-  DELETE
-  /api/Mission/{id}
-  ```
-  ```http
-  GET
-  /api/Mission/employeeId/{employeeId}
-  ```
-  ```http
-  POST
-  /api/Mission
-  ```
-  ```http
-  PUT
-  /api/Mission
-  ```
-### -Mais APIs em processo de desenvolvimento ###
+### 4. Executar os microsserviços
+Dentro de cada projeto de microsserviço, execute:
+dotnet run
 
-Desenvolvido por Eduardo Alves Nascimento
+### 5. Executar o frontend
+cd FrontEnd/RHFrontEnd
+dotnet run
+
+Acesse o sistema em: http://localhost:5000
+
+## 🧪 Testes
+Para rodar os testes automatizados:
+dotnet test
+
+## 📄 Licença
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+## 🤝 Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
