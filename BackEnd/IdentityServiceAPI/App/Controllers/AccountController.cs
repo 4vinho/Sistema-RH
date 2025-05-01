@@ -26,7 +26,7 @@ namespace MyApp.Namespace
 
         }
 
-        [HttpPost("Login"), Authorize(Roles = "User ,Admin, Owner")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             try
